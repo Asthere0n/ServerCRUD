@@ -7,7 +7,23 @@ const server = http.createServer((req, res) => {
 
   // send an HTML response
   res.setHeader('Content-Type', 'text/html')
-  fs.readFile('./index.html', (err, data) => {
+
+  let path = "./views"
+
+  switch (req.url) {
+    case '/':
+      path += '/index.html'
+      break
+    case '/about':
+      path += '/about.html'
+      break
+    default:
+      path += '/404.html'
+      res.statusCode = 404
+      break
+  }
+
+  fs.readFile(path, (err, data) => {
     if (err) {
       res.statusCode = 500
       console.warn(err)
@@ -15,8 +31,7 @@ const server = http.createServer((req, res) => {
       return
     } else {
       res.statusCode = 200
-      res.write(data)
-      res.end()
+      res.end(data)
     }
   })
 })
