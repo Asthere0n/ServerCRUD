@@ -1,0 +1,28 @@
+{
+  "type": "module",
+  "name": "servercrud",
+  "version": "1.0.0",
+  "description": "First server created by Cristian Sanchez",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Asthere0n/ServerCRUD.git"
+  },
+  "keywords": [
+    "Node",
+    "server"
+  ],
+  "author": "Cristian Sanchez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Asthere0n/ServerCRUD/issues"
+  },
+  "homepage": "https://github.com/Asthere0n/ServerCRUD#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
