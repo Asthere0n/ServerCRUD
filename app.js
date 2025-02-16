@@ -13,6 +13,7 @@ const __dirname = path.dirname(__filename)
 const app = express();
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname,'views'))
+app.use(express.static('public'))
 
 // listen for requests
 app.listen(3000);
