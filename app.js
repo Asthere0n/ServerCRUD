@@ -9,12 +9,14 @@ const __dirname = path.dirname(__filename)
 
 // starting the server with express
 const app = express();
+app.set('view engine', 'ejs')
 
 // listen for requests
 app.listen(3000);
+console.log(`Server functioning in http://localhost:3000`)
 
 app.get('/', (req, res)=>{
-    res.sendFile('./views/index.html', {root: path.dirname(__filename)})
+    res.render('index')
 })
 
 // Redirection 301
@@ -23,10 +25,10 @@ app.get('/index.html', (req, res)=>{
 })
 
 app.get('/about', (req, res)=>{
-    res.sendFile('./views/about.html', {root: path.dirname(__filename)})
+    res.render('about')
 })
 
 // 404 page
 app.use((req, res)=>{
-    res.status(404).sendFile('./views/404.html', {root: path.dirname(__filename)})
+    res.status(404).render('404')
 })
