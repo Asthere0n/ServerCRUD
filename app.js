@@ -20,7 +20,11 @@ app.use(express.static('public'))
 
 // Connect to MongoDB 
 const dbURI = `mongodb+srv://${atlasUser}:${atlasPassword}@tutorial0.08f9w.mongodb.net/?retryWrites=true&w=majority&appName=Tutorial0`
-mongoose.connect(dbURI)
+mongoose.connect(dbURI).then((result)=>{
+    console.log('Connected to MongoDB')
+}).catch(()=>{
+    console.error('Error: Connection to MongoDB failed')
+})
 
 // listen for requests
 app.listen(3000);
