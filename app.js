@@ -3,7 +3,7 @@ import express from 'express';
 import path from 'path';
 import { title } from 'process';
 import { fileURLToPath } from 'url';
-import { mongoose } from 'mongoose';
+import mongoose from 'mongoose';
 import {atlasUser, atlasPassword} from './DBaccess.js'
 
 
@@ -22,13 +22,13 @@ app.use(express.static('public'))
 const dbURI = `mongodb+srv://${atlasUser}:${atlasPassword}@tutorial0.08f9w.mongodb.net/?retryWrites=true&w=majority&appName=Tutorial0`
 mongoose.connect(dbURI).then((result)=>{
     console.log('Connected to MongoDB')
+    // listen for requests
+    app.listen(3000);
+    console.log(`Server functioning in http://localhost:3000`)
 }).catch(()=>{
     console.error('Error: Connection to MongoDB failed')
 })
 
-// listen for requests
-app.listen(3000);
-console.log(`Server functioning in http://localhost:3000`)
 
 app.get('/', (req, res)=>{
     res.render('index', {title: 'Home'})
