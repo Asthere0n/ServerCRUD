@@ -3,6 +3,9 @@ import express from 'express';
 import path from 'path';
 import { title } from 'process';
 import { fileURLToPath } from 'url';
+import { mongoose } from 'mongoose';
+import {atlasUser, atlasPassword} from './DBaccess.js'
+
 
 // Get the directory name
 const __filename = fileURLToPath(import.meta.url)
@@ -14,6 +17,10 @@ const app = express();
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname,'views'))
 app.use(express.static('public'))
+
+// Connect to MongoDB 
+const dbURI = `mongodb+srv://${atlasUser}:${atlasPassword}@tutorial0.08f9w.mongodb.net/?retryWrites=true&w=majority&appName=Tutorial0`
+mongoose.connect(dbURI)
 
 // listen for requests
 app.listen(3000);
