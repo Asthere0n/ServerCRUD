@@ -30,12 +30,12 @@ mongoose.connect(dbURI).then((result) => {
     console.error('Error: Connection to MongoDB failed')
 })
 
-// mongoose and Mongo sandbox routes
+// Create a new blog and save it in DB
 app.get('/add-blog', (req, res) => {
     const blog = new Blog({
-        title: 'blog 0',
-        snippet: 'about my new blog',
-        body: 'Lorem ipsum'
+        title: 'blog 3',
+        snippet: 'about my new new new blog',
+        body: 'Lorem ipsum brother'
     })
 
     blog.save().then((result)=>{
@@ -43,6 +43,13 @@ app.get('/add-blog', (req, res) => {
     })
     .catch((err)=>{
         console.log(err)
+    })
+})
+
+// To see all blogs
+app.get('/all-blogs', (req, res) => {
+    Blog.find().then((result)=>{
+        res.send(result)
     })
 })
 
