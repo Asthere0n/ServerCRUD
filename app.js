@@ -4,7 +4,7 @@ import path from 'path';
 import { title } from 'process';
 import { fileURLToPath } from 'url';
 import mongoose from 'mongoose';
-import { Blog } from './model/blog.js'
+import { Blog } from './models/blog.js'
 import { atlasUser, atlasPassword } from './DBaccess.js'
 
 
@@ -32,7 +32,6 @@ mongoose.connect(dbURI).then((result) => {
 
 // mongoose and Mongo sandbox routes
 app.get('/add-blog', (req, res) => {
-    console.log(req)
     const blog = new Blog({
         title: 'blog 0',
         snippet: 'about my new blog',
